@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Styled from 'styled-components';
 
 import Color from '../styles/ColorPalette';
@@ -6,12 +7,16 @@ import Color from '../styles/ColorPalette';
 const SquareBlock = Styled.div`
   height: 88px;
   width: 88px;
-  padding: 8px;
   border: none;
   border-radius: 4px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
   background-color: ${Color.defaultTheme[0]};
-  p {
-    margin: 0px;
+  div {
+    margin: 8px;
+    max-height: 72px;
+    width: 72px;
     text-align: center;
     /* font-size: 1rem; */
     /* font-weight: 600; */
@@ -19,12 +24,16 @@ const SquareBlock = Styled.div`
   }
 `;
 
-const Square = () => {
+const Square = ({ text }) => {
   return (
     <SquareBlock>
-      <p>안녕</p>
+      <div>{text}</div>
     </SquareBlock>
   );
+};
+
+Square.propTypes = {
+  text: PropTypes.string,
 };
 
 export default Square;

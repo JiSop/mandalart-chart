@@ -1,11 +1,25 @@
 import React from 'react';
 
-import Square from './Square';
+import GoalGrid from './GoalGrid';
 
 const Mandalart = () => {
   return (
     <>
-      <Square />
+      <div style={{ display: 'flex' }}>
+        <GoalGrid />
+        <GoalGrid />
+        <GoalGrid />
+      </div>
+      <div style={{ display: 'flex' }}>
+        <GoalGrid />
+        <GoalGrid />
+        <GoalGrid />
+      </div>
+      <div style={{ display: 'flex' }}>
+        <GoalGrid />
+        <GoalGrid />
+        <GoalGrid />
+      </div>
     </>
   );
 };
