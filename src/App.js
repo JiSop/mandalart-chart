@@ -1,6 +1,8 @@
 import React from 'react';
-import './style.scss';
-import Mandalart from "./component/Mandalart";
+import './App.css';
+import 'normalize.css';
+
+import Mandalart from './components/Mandalart';
 
 const App = () => {
   return (

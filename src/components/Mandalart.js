@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react';
+
+import Square from './Square';
 
 const Mandalart = () => {
-  return <div className="square"></div>;
+  return (
+    <>
+      <Square />
+    </>
+  );
 };
 
 export default Mandalart;
