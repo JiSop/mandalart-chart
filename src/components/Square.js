@@ -1,26 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
-const SquareBlock = styled.div`
+import Color from '../styles/ColorPalette';
+
+const SquareBlock = Styled.div`
   height: 88px;
   width: 88px;
   padding: 8px;
   border: none;
   border-radius: 4px;
-  background-color: #ebedf0;
+  background-color: ${Color.defaultTheme[0]};
   p {
     margin: 0px;
+    text-align: center;
+    /* font-size: 1rem; */
+    /* font-weight: 600; */
+    /* letter-spacing: 1.25px; */
   }
-  /* font-size: 1rem; */
-  /* font-weight: 600; */
-  /* letter-spacing: 1.25px; */
-  /* text-align: center; */
 `;
 
 const Square = () => {
   return (
     <SquareBlock>
-      <p>text</p>
+      <p>안녕</p>
     </SquareBlock>
   );
 };
