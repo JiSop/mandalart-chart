@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Styled from 'styled-components';
+import Styled, { css } from 'styled-components';
 
 import Color from '../styles/ColorPalette';
+import Typo from '../styles/Typo';
 
 const SquareBlock = Styled.div`
   height: 88px;
@@ -14,19 +15,36 @@ const SquareBlock = Styled.div`
   align-items: center;
   background-color: ${Color.defaultTheme[0]};
   div {
-    margin: 8px;
-    max-height: 72px;
     width: 72px;
+    max-height: 72px;
+    margin: 8px;
     text-align: center;
-    /* font-size: 1rem; */
-    /* font-weight: 600; */
-    /* letter-spacing: 1.25px; */
+    color: ${Color.fontColor};
+    ${Typo.subGoalPlan};
   }
+  ${props =>
+    props.type === 'goal'
+      ? css`
+          background-color: ${Color.defaultTheme[2]};
+          div {
+            ${Typo.goal};
+          }
+        `
+      : props.type === 'subGoal'
+      ? css`
+          background-color: ${Color.defaultTheme[1]};
+          div {
+            ${Typo.subGoal};
+          }
+        `
+      : ''}
 `;
 
-const Square = ({ text }) => {
+const Square = props => {
+  const { text, type } = props;
+
   return (
-    <SquareBlock>
+    <SquareBlock type={type}>
       <div>{text}</div>
     </SquareBlock>
   );
@@ -34,6 +52,7 @@ const Square = ({ text }) => {
 
 Square.propTypes = {
   text: PropTypes.string,
+  type: PropTypes.string,
 };
 
-export default Square;
+export default React.memo(Square);

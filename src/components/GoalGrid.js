@@ -24,8 +24,8 @@ const GoalGrid = () => {
         <Square text="3" />
       </GridRow>
       <GridRow>
-        <Square text="4" />
-        <Square text="5" />
+        <Square text="4" type="subGoal" />
+        <Square text="5" type="goal" />
         <Square text="6" />
       </GridRow>
       <GridRow>
