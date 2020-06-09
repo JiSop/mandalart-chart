@@ -25,7 +25,8 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-react": "^7.17.0",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "browserslist": {
     "production": [
