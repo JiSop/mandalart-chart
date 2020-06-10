@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import 'normalize.css';
 
-import Mandalart from './components/Mandalart';
+import MandalartContainer from './containers/MandalartContainer';
 
 const App = () => {
   return (
     <div id="App">
-      <Mandalart />
+      <MandalartContainer />
     </div>
   );
 };

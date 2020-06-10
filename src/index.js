@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/store';
 import reducer from './redux/reducer';
 import App from './App.js';
-import dumdata from './redux/dumData';
+import dumData from './redux/dumData';
 
-const initialState = dumdata;
+const initialState = { mandalart: { ...dumData } };
 
 const store = configureStore(reducer, initialState);
 

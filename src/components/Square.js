@@ -38,13 +38,17 @@ const SquareBlock = Styled.div`
           }
         `
       : ''}
+  ${props =>
+    props.index &&
+    css`
+      order: ${props.index};
+    `}
 `;
 
 const Square = props => {
-  const { text, type } = props;
-
+  const { text, type, index } = props;
   return (
-    <SquareBlock type={type}>
+    <SquareBlock type={type} index={index}>
       <div>{text}</div>
     </SquareBlock>
   );
@@ -53,6 +57,7 @@ const Square = props => {
 Square.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,
+  index: PropTypes.number,
 };
 
 export default React.memo(Square);
