@@ -1,10 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import Mandalart from '../components/Mandalart';
+import { useSelector } from 'react-redux';
 
 function MandalartContainer() {
-  const mandalart = useSelector(state => state.mandalart);
-  return <Mandalart mandalart={mandalart} />;
+  const { mainGoal, subGoals } = useSelector(({ mandalart }) => ({
+    mainGoal: mandalart.mainGoal,
+    subGoals: mandalart.subGoals,
+  }));
+
+  return <Mandalart mainGoal={mainGoal} subGoals={subGoals} />;
 }
 
 export default MandalartContainer;

@@ -10,7 +10,7 @@ const MainGoalGridBlock = Styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  order: 4;
+  order: 5;
 `;
 
 const MainGoalGrid = ({ mainGoal, subGoals }) => {
@@ -31,7 +31,7 @@ const MainGoalGrid = ({ mainGoal, subGoals }) => {
 
 MainGoalGrid.propTypes = {
   mainGoal: PropTypes.string,
-  subGoals: PropTypes.object,
+  subGoals: PropTypes.array,
 };
 
 export default MainGoalGrid;

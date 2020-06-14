@@ -10,20 +10,25 @@ const MandalartBlock = Styled.div`
   flex-direction: row;
 `;
 
-const Mandalart = ({ mandalart }) => {
-  const { mainGoal, subGoals } = mandalart;
+const Mandalart = ({ mainGoal, subGoals }) => {
   return (
     <MandalartBlock>
       <MainGoalGrid mainGoal={mainGoal} subGoals={subGoals} />
-      {subGoals.map((subGoal, i) => (
-        <GoalGrid subGoal={subGoal} index={i} key={i} />
+      {subGoals.map(subGoal => (
+        <GoalGrid
+          id={subGoal.id}
+          goal={subGoal.goal}
+          plans={subGoal.plans}
+          key={subGoal.id}
+        />
       ))}
     </MandalartBlock>
   );
 };
 
 Mandalart.propTypes = {
-  mandalart: PropTypes.object,
+  mainGoal: PropTypes.string,
+  subGoals: PropTypes.array,
 };
 
 export default Mandalart;

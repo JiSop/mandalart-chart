@@ -14,6 +14,7 @@ const SquareBlock = Styled.div`
   display: flex;
   align-items: center;
   background-color: ${Color.defaultTheme[0]};
+  word-break: keep-all;
   div {
     width: 72px;
     max-height: 72px;
@@ -45,8 +46,7 @@ const SquareBlock = Styled.div`
     `}
 `;
 
-const Square = props => {
-  const { text, type, index } = props;
+const Square = ({ text, type, index }) => {
   return (
     <SquareBlock type={type} index={index}>
       <div>{text}</div>

@@ -17,21 +17,21 @@ const GoalGridBlock = Styled.div`
     `}
 `;
 
-const GoalGrid = ({ subGoal, index }) => {
-  const { goal, plans } = subGoal;
+const GoalGrid = ({ id, goal, plans }) => {
   return (
-    <GoalGridBlock index={index}>
+    <GoalGridBlock index={id}>
       <Square text={goal} type="subGoal" index={4} />
       {plans.map((plan, i) => (
-        <Square text={plan} key={plan + i} index={i} />
+        <Square text={plan} index={i} key={i} />
       ))}
     </GoalGridBlock>
   );
 };
 
 GoalGrid.propTypes = {
-  subGoal: PropTypes.object,
-  index: PropTypes.number,
+  id: PropTypes.number,
+  goal: PropTypes.string,
+  plans: PropTypes.array,
 };
 
 export default GoalGrid;

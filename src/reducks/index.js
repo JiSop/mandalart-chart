@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import goals from './goals';
+import modal from './modal';
 import mandalart from './mandalart';
 
 const rootReducer = combineReducers({
-  goals,
+  modal,
   mandalart,
 });
 
