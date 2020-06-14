@@ -8,6 +8,7 @@
     "format": "prettier --write \"./**/*.{js,html,css}\""
   },
   "dependencies": {
+    "immer": "^7.0.0",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
