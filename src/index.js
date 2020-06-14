@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from './redux/store';
-import reducer from './redux/reducer';
 import App from './App.js';
-import dumData from './redux/dumData';
+import { Provider } from 'react-redux';
+import configureStore from './reducks/configureStore';
+import rootReducer from './reducks';
 
-const initialState = { mandalart: { ...dumData } };
-
-const store = configureStore(reducer, initialState);
+const store = configureStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
