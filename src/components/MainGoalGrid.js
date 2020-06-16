@@ -10,17 +10,17 @@ const MainGoalGridBlock = Styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  order: 5;
+  order: 4;
 `;
 
 const MainGoalGrid = ({ mainGoal, subGoals }) => {
   return (
     <MainGoalGridBlock>
-      <Square text={mainGoal} type="goal" index={4} />
+      <Square text={mainGoal} role="goal" index={4} />
       {subGoals.map((subGoal, i) => (
         <Square
           text={subGoal.goal}
-          type="subGoal"
+          role="subGoal"
           index={i}
           key={subGoal.goal + i}
         />

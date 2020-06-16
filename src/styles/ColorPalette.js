@@ -1,4 +1,5 @@
 export default {
   defaultTheme: ['#EBEDF0', '#C6E48B', '#7BC96F'],
   fontColor: '#121212',
+  surface: '#ffffff',
 };
