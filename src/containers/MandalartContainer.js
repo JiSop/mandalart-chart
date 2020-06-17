@@ -9,10 +9,11 @@ import {
 
 function MandalartContainer() {
   const dispatch = useDispatch();
-  const { mainGoal, subGoals } = useSelector(({ mandalart }) => ({
-    mainGoal: mandalart.mainGoal,
-    subGoals: mandalart.subGoals,
+  const { mainGoal, subGoals } = useSelector(({ mainGoal, subGoals }) => ({
+    mainGoal,
+    subGoals,
   }));
+
   const onChangeMainGoal = e => {
     const { value } = e.target;
     if (/\n/g.test(value)) return;
