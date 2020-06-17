@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from 'styled-components';
 import GoalGrid from './GoalGrid';
-import MainGoalGrid from './MainGoalGrid';
 
 const MandalartBlock = Styled.div`
   display: flex;
@@ -10,13 +9,25 @@ const MandalartBlock = Styled.div`
   flex-direction: row;
 `;
 
-const Mandalart = ({ mainGoal, subGoals, onChangePlan }) => {
+const Mandalart = ({
+  mainGoal,
+  subGoals,
+  onChangeMainGoal,
+  onChangeSubGoal,
+  onChangePlan,
+}) => {
   return (
     <MandalartBlock>
-      <MainGoalGrid mainGoal={mainGoal} subGoals={subGoals} />
+      <GoalGrid
+        gridIndex={4}
+        goal={mainGoal}
+        subGoals={subGoals}
+        onChangeMainGoal={onChangeMainGoal}
+        onChangeSubGoal={onChangeSubGoal}
+      />
       {subGoals.map((subGoal, i) => (
         <GoalGrid
-          id={i}
+          gridIndex={i}
           goal={subGoal.goal}
           plans={subGoal.plans}
           onChangePlan={onChangePlan}
@@ -30,7 +41,9 @@ const Mandalart = ({ mainGoal, subGoals, onChangePlan }) => {
 Mandalart.propTypes = {
   mainGoal: PropTypes.string,
   subGoals: PropTypes.array,
+  onChangeMainGoal: PropTypes.func,
+  onChangeSubGoal: PropTypes.func,
   onChangePlan: PropTypes.func,
 };
 
-export default Mandalart;
+export default React.memo(Mandalart);

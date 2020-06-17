@@ -19,10 +19,23 @@ const SquareBlock = styled.div`
   color: ${Color.fontColor};
   background-color: ${Color.defaultTheme[0]};
   ${Typo.subGoalPlan}
-  p {
+  p, textarea {
     margin: 0px;
     margin-left: 8px;
     margin-right: 8px;
+    width: 72px;
+  }
+  textarea {
+    padding: 0px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    border: none;
+    border-radius: 4px;
+    background-color: inherit;
+    text-align: center;
+    word-break: keep-all;
+    color: ${Color.fontColor};
   }
   ${props =>
     props.role === 'goal' &&
@@ -37,62 +50,48 @@ const SquareBlock = styled.div`
       ${Typo.subGoal};
     `}
   ${props =>
-    props.index &&
+    props.gridIndex &&
     css`
-      order: ${props.index};
+      order: ${props.gridIndex};
     `}
 `;
 
-const StyledTextarea = styled.textarea`
-  padding: 0px;
-  resize: none;
-  outline: none;
-  overflow: hidden;
-  border: none;
-  border-radius: 4px;
-  width: 72px;
-  margin: 0px;
-  margin-left: 8px;
-  margin-right: 8px;
-  background-color: inherit;
-  text-align: center;
-  word-break: keep-all;
-  color: ${Color.fontColor};
-`;
-
-// const StyledDiv = styled.div`
-//   width: 72px;
-//   max-height: 72px;
-//   margin: 8px;
-//   color: ${Color.fontColor};
-//   background-color: inherit;
-//   ${Typo.subGoalPlan};
-// `;
-
-const Square = ({ role, index, text, gIndex, onChangePlan }) => {
-  return (
-    <SquareBlock role={role} index={index}>
-      {onChangePlan && (
-        <StyledTextarea
-          value={text}
-          name={index}
-          index={index}
-          placeholder="세부&#13;&#10;계획"
-          onChange={e => onChangePlan(e, gIndex)}
-          maxLength="16"
-        />
-      )}
-      {!onChangePlan && <p>{text}</p>}
+const Square = ({
+  role,
+  text,
+  squareIndex,
+  onChange,
+  placeholder,
+  maxLength,
+}) => {
+  return onChange ? (
+    <SquareBlock role={role} gridIndex={squareIndex}>
+      <textarea
+        value={text}
+        onChange={onChange}
+        maxLength={maxLength}
+        placeholder={placeholder}
+        name={squareIndex}
+      />
+    </SquareBlock>
+  ) : (
+    <SquareBlock role={role} gridIndex={squareIndex}>
+      <p>{text}</p>
     </SquareBlock>
   );
 };
 
+// Square.defaultProps = {
+//   squareIndex: 4,
+// };
+
 Square.propTypes = {
   role: PropTypes.string,
-  index: PropTypes.number,
+  squareIndex: PropTypes.number,
   text: PropTypes.string,
-  gIndex: PropTypes.number,
-  onChangePlan: PropTypes.func,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  maxLength: PropTypes.string,
 };
 
 export default React.memo(Square);

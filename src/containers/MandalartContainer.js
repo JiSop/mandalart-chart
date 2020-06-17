@@ -1,7 +1,11 @@
 import React from 'react';
 import Mandalart from '../components/Mandalart';
 import { useSelector, useDispatch } from 'react-redux';
-import { changePlan } from '../reducks/mandalart';
+import {
+  changeMainGoal,
+  changeSubGoal,
+  changePlan,
+} from '../reducks/mandalart';
 
 function MandalartContainer() {
   const dispatch = useDispatch();
@@ -9,6 +13,16 @@ function MandalartContainer() {
     mainGoal: mandalart.mainGoal,
     subGoals: mandalart.subGoals,
   }));
+  const onChangeMainGoal = e => {
+    const { value } = e.target;
+    if (/\n/g.test(value)) return;
+    dispatch(changeMainGoal(value));
+  };
+  const onChangeSubGoal = (e, index) => {
+    const { value } = e.target;
+    if (/\n/g.test(value)) return;
+    dispatch(changeSubGoal({ index, value }));
+  };
   const onChangePlan = (e, id) => {
     const { value, name } = e.target;
     if (/\n/g.test(value)) return;
@@ -18,6 +32,8 @@ function MandalartContainer() {
     <Mandalart
       mainGoal={mainGoal}
       subGoals={subGoals}
+      onChangeMainGoal={onChangeMainGoal}
+      onChangeSubGoal={onChangeSubGoal}
       onChangePlan={onChangePlan}
     />
   );

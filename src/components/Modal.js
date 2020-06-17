@@ -17,7 +17,7 @@ const ModalOverlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 30;
-  /* backdrop-filter: blur(1px); */
+  backdrop-filter: blur(0.5px);
 `;
 
 const ModalBlock = styled.div`
@@ -59,7 +59,15 @@ const ModalBody = styled.div`
     `}
 `;
 
-const Modal = ({ goal, plans, gIndex, onChangePlan, setModal }) => {
+const Modal = ({
+  goal,
+  plans,
+  gridIndex,
+  onChangeMainGoal,
+  onChangeSubGoal,
+  onChangePlan,
+  setModal,
+}) => {
   return (
     <ModalPortal>
       <ModalOverlay>
@@ -78,16 +86,44 @@ const Modal = ({ goal, plans, gIndex, onChangePlan, setModal }) => {
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
               </svg>
             </div>
-            <Square text={goal} role="subGoal" index={4} />
-            {plans.map((plan, i) => (
-              <Square
-                text={plan}
-                index={i}
-                key={i}
-                gIndex={gIndex}
-                onChangePlan={onChangePlan}
-              />
-            ))}
+            {onChangeMainGoal && onChangeSubGoal && (
+              <>
+                <Square
+                  role="goal"
+                  text={goal}
+                  onChange={onChangeMainGoal}
+                  squareIndex={gridIndex}
+                  placeholder="목표"
+                  maxLength="8"
+                />
+                {plans.map((plan, i) => (
+                  <Square
+                    role="subGoal"
+                    text={plan.goal}
+                    onChange={e => onChangeSubGoal(e, i)}
+                    placeholder="세부&#13;&#10;목표"
+                    maxLength="8"
+                    squareIndex={i}
+                    key={i}
+                  />
+                ))}
+              </>
+            )}
+            {onChangePlan && (
+              <>
+                <Square role="subGoal" text={goal} squareIndex={4} />
+                {plans.map((plan, i) => (
+                  <Square
+                    text={plan}
+                    onChange={e => onChangePlan(e, gridIndex)}
+                    placeholder="세부&#13;&#10;계획"
+                    maxLength="16"
+                    squareIndex={i}
+                    key={i}
+                  />
+                ))}
+              </>
+            )}
           </ModalBody>
         </ModalBlock>
       </ModalOverlay>
@@ -98,7 +134,9 @@ const Modal = ({ goal, plans, gIndex, onChangePlan, setModal }) => {
 Modal.propTypes = {
   goal: PropTypes.string,
   plans: PropTypes.array,
-  gIndex: PropTypes.number,
+  gridIndex: PropTypes.number,
+  onChangeMainGoal: PropTypes.func,
+  onChangeSubGoal: PropTypes.func,
   onChangePlan: PropTypes.func,
   setModal: PropTypes.func,
 };

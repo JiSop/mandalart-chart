@@ -15,7 +15,6 @@ const StyledButton = styled.button`
   order: 4;
   cursor: pointer;
   text-align: center;
-  word-break: keep-all;
   color: ${Color.fontColor};
   ${Typo.subGoalPlan};
   ${props =>

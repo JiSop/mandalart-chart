@@ -5,22 +5,25 @@ const reducerName = 'mandalart';
 
 // SECTION : action types
 const CHANGE_MAIN_GOAL = `${reducerName}/CHANGE_GOAL`;
+const CHANGE_SUB_GOAL = `${reducerName}/CHANGE_SUB_GOAL`;
 const CHANGE_PLAN = `${reducerName}/CHANGE_PLAN`;
-const SET_PLANS = `${reducerName}/SET_PLANS`;
 
 // SECTION : action creators
 export const changeMainGoal = createAction(
   CHANGE_MAIN_GOAL,
   mainGoal => mainGoal,
 );
+export const changeSubGoal = createAction(
+  CHANGE_SUB_GOAL,
+  ({ index, value }) => ({
+    index,
+    subGoal: value,
+  }),
+);
 export const changePlan = createAction(CHANGE_PLAN, ({ id, name, value }) => ({
   id,
   name,
   value,
-}));
-export const setPlans = createAction(SET_PLANS, ({ index, subGoal }) => ({
-  index,
-  subGoal,
 }));
 
 // SECTION : reducer
@@ -147,13 +150,13 @@ const reducerMap = {
     ...state,
     mainGoal,
   }),
+  [CHANGE_SUB_GOAL]: (state, { payload: { index, subGoal } }) =>
+    produce(state, draft => {
+      draft.subGoals[index].goal = subGoal;
+    }),
   [CHANGE_PLAN]: (state, { payload: { id, name, value } }) =>
     produce(state, draft => {
       draft.subGoals[id].plans[name] = value;
-    }),
-  [SET_PLANS]: (state, { payload: { index, subGoal } }) =>
-    produce(state, draft => {
-      draft.subGoals[index] = subGoal;
     }),
 };
 

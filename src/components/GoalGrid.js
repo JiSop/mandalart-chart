@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Square from './Square';
-import Modal from './Modal';
 import SquareButton from './SquareButton';
+import Modal from './Modal';
 
 const GoalGridBlock = Styled.div`
   height: 288px;
@@ -13,39 +13,65 @@ const GoalGridBlock = Styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   ${props =>
-    props.index &&
+    props.gridIndex &&
     css`
-      order: ${props.index};
+      order: ${props.gridIndex};
     `}
 `;
 
-const GoalGrid = ({ id, goal, plans, onChangePlan }) => {
+const GoalGrid = ({
+  gridIndex,
+  goal,
+  plans,
+  subGoals,
+  onChangeMainGoal,
+  onChangeSubGoal,
+  onChangePlan,
+}) => {
   const [modal, setModal] = useState(false);
+  const role = subGoals ? 'goal' : 'subGoal';
   return (
-    <GoalGridBlock index={id}>
-      <SquareButton role="subGoal" onClick={() => setModal(true)}>
+    <GoalGridBlock gridIndex={gridIndex}>
+      <SquareButton role={role} onClick={() => setModal(true)}>
         {goal}
       </SquareButton>
+      {subGoals &&
+        subGoals.map((subGoal, i) => (
+          <Square
+            role="subGoal"
+            text={subGoal.goal}
+            squareIndex={i}
+            key={subGoal.id}
+          />
+        ))}
+      {plans &&
+        plans.map((plan, i) => <Square text={plan} squareIndex={i} key={i} />)}
       {modal && (
         <Modal
+          gridIndex={gridIndex}
           goal={goal}
-          plans={plans}
-          gIndex={id}
-          onChangePlan={onChangePlan}
+          plans={plans || subGoals}
           setModal={setModal}
+          onChangeMainGoal={onChangeMainGoal}
+          onChangeSubGoal={onChangeSubGoal}
+          onChangePlan={onChangePlan}
         />
       )}
-      {plans.map((plan, i) => (
-        <Square text={plan} index={i} key={i} />
-      ))}
     </GoalGridBlock>
   );
 };
 
+// GoalGrid.defaultProps = {
+//   gridIndex: 4,
+// };
+
 GoalGrid.propTypes = {
-  id: PropTypes.number,
+  gridIndex: PropTypes.number,
   goal: PropTypes.string,
   plans: PropTypes.array,
+  subGoals: PropTypes.array,
+  onChangeMainGoal: PropTypes.func,
+  onChangeSubGoal: PropTypes.func,
   onChangePlan: PropTypes.func,
 };
 
