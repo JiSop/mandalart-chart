@@ -4,6 +4,8 @@ import Styled from 'styled-components';
 import GoalGrid from './GoalGrid';
 
 const MandalartBlock = Styled.div`
+  width: 888px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
