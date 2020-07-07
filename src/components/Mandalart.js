@@ -17,26 +17,32 @@ const Mandalart = ({
   onChangeMainGoal,
   onChangeSubGoal,
   onChangePlan,
+  saveMandalart,
+  deleteMandalart,
 }) => {
   return (
-    <MandalartBlock>
-      <GoalGrid
-        gridIndex={4}
-        goal={mainGoal}
-        subGoals={subGoals}
-        onChangeMainGoal={onChangeMainGoal}
-        onChangeSubGoal={onChangeSubGoal}
-      />
-      {subGoals.map((subGoal, i) => (
+    <>
+      <button onClick={saveMandalart}>저장</button>
+      <button onClick={deleteMandalart}>삭제</button>
+      <MandalartBlock>
         <GoalGrid
-          gridIndex={i}
-          goal={subGoal.goal}
-          plans={subGoal.plans}
-          onChangePlan={onChangePlan}
-          key={subGoal.id}
+          gridIndex={4}
+          goal={mainGoal}
+          subGoals={subGoals}
+          onChangeMainGoal={onChangeMainGoal}
+          onChangeSubGoal={onChangeSubGoal}
         />
-      ))}
-    </MandalartBlock>
+        {subGoals.map((subGoal, i) => (
+          <GoalGrid
+            gridIndex={i}
+            goal={subGoal.goal}
+            plans={subGoal.plans}
+            onChangePlan={onChangePlan}
+            key={subGoal.id}
+          />
+        ))}
+      </MandalartBlock>
+    </>
   );
 };
 
@@ -46,6 +52,8 @@ Mandalart.propTypes = {
   onChangeMainGoal: PropTypes.func,
   onChangeSubGoal: PropTypes.func,
   onChangePlan: PropTypes.func,
+  saveMandalart: PropTypes.func,
+  deleteMandalart: PropTypes.func,
 };
 
 export default React.memo(Mandalart);
