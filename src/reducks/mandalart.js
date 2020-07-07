@@ -8,6 +8,7 @@ const CHANGE_MAIN_GOAL = `${reducerName}/CHANGE_GOAL`;
 const CHANGE_SUB_GOAL = `${reducerName}/CHANGE_SUB_GOAL`;
 const CHANGE_PLAN = `${reducerName}/CHANGE_PLAN`;
 const SET_MANDALART = `${reducerName}/SET_MANDALART`;
+const INITIALIZE = `${reducerName}/INITIALIZE`;
 
 // SECTION : action creators
 export const changeMainGoal = createAction(
@@ -33,6 +34,7 @@ export const setMandalart = createAction(
     subGoals,
   }),
 );
+export const initialize = createAction(INITIALIZE);
 
 // SECTION : reducer
 const initialState = {
@@ -99,6 +101,7 @@ const reducerMap = {
     mainGoal,
     subGoals,
   }),
+  [INITIALIZE]: () => initialState,
 };
 
 export default handleActions(reducerMap, initialState);

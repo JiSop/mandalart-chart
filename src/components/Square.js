@@ -16,6 +16,7 @@ const SquareBlock = styled.div`
   justify-content: center;
   text-align: center;
   word-break: keep-all;
+  overflow-wrap: break-word;
   color: ${Color.fontColor};
   background-color: ${Color.defaultTheme[0]};
   ${Typo.subGoalPlan}

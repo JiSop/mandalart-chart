@@ -5,6 +5,7 @@ import {
   changeMainGoal,
   changeSubGoal,
   changePlan,
+  initialize,
 } from '../reducks/mandalart';
 
 function MandalartContainer() {
@@ -39,6 +40,7 @@ function MandalartContainer() {
   const deleteMandalart = () => {
     try {
       localStorage.removeItem('mandalart');
+      dispatch(initialize());
     } catch (e) {
       console.log('삭제 실패!', e);
     }
