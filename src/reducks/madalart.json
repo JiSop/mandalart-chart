@@ -1,0 +1,91 @@
+{
+  "mainGoal": "string",
+  "subGoal1": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal2": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal3": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal4": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal5": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal6": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal7": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  },
+  "subGoal8": {
+    "goal": "String",
+    "plan1": "String",
+  	"plan2": "String",
+  	"plan3": "String",
+    "plan4": "String",
+  	"plan5": "String",
+  	"plan6": "String",
+    "plan7": "String",
+  	"plan8": "String"
+  }
+}
